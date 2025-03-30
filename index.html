@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlock Download</title>
+    <title>Watch Ads to Unlock Download</title>
     <script>
-        let adsWatched = 0;
-        const maxAds = 3;
-        let unlockTime = null;
+        let adsWatched = 0;  // Track the number of ads watched
+        const maxAds = 5;    // Number of ads required to unlock download link
 
         // Function to simulate watching an ad
         function watchAd() {
@@ -15,46 +14,39 @@
                 adsWatched++;
                 alert(`You have watched ${adsWatched} ads.`);
                 
-                // Check if the user has watched all 3 ads
+                // Check if the user has watched all 5 ads
                 if (adsWatched === maxAds) {
                     unlockDownload();
                 }
             }
         }
 
-        // Unlock the download link and set timer
+        // Unlock the download link after 5 ads
         function unlockDownload() {
             const downloadLink = document.getElementById('download-link');
-            downloadLink.style.display = 'block';
-
-            // Set the time for the file to be available (2 hours)
-            unlockTime = new Date().getTime() + 2 * 60 * 60 * 1000; // 2 hours from now
-
-            // Start countdown for 2 hours
-            setInterval(checkTimeLimit, 1000);
-        }
-
-        // Check if 2 hours have passed and disable the download
-        function checkTimeLimit() {
-            if (new Date().getTime() > unlockTime) {
-                document.getElementById('download-link').style.display = 'none';
-                alert('Your download time has expired! Please watch more ads to unlock the file again.');
-            }
+            downloadLink.style.display = 'block'; // Show the download link
+            alert('Congratulations! You can now download the file.');
         }
     </script>
 </head>
 <body>
-    <h1>Watch Ads to Unlock Download</h1>
-    <p>You need to watch 3 ads to unlock the download link for 2 hours.</p>
-    
-    <!-- Simulated Ad Viewer -->
+    <h1>Watch Ads to Unlock the Download Link</h1>
+    <p>You need to watch 5 ads to unlock the download link.</p>
+
+    <!-- Button to simulate ad watching -->
     <button onclick="watchAd()">Watch Ad</button>
+
+    <!-- Ad from Adsterra (Banner Ad Code with your Ad Unit ID) -->
+    <div>
+        <script async="async" data-cfasync="false" src="//pl26257991.effectiveratecpm.com/f8edc1924b397524e5b104dbebbf9ff6/invoke.js"></script>
+        <div id="container-f8edc1924b397524e5b104dbebbf9ff6"></div>
+    </div>
 
     <!-- Hidden Download Link (Initially hidden) -->
     <a id="download-link" href="path/to/your/file.exe" style="display: none;">Click here to download the file</a>
 
     <footer>
-        <p>Thank you for using our site. Enjoy the file!</p>
+        <p>Thank you for using our site! Enjoy your download.</p>
     </footer>
 </body>
 </html>
