@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch Ads to Unlock Download</title>
     <script>
-        let adsWatched = 0;  // Track the number of ads watched
+        let adsWatched = 0;  // Track the number of ads clicked
         const maxAds = 5;    // Number of ads required to unlock download link
 
-        // Function to simulate watching an ad
-        function watchAd() {
+        // Function to simulate watching an ad by clicking on the banner
+        function clickAd() {
             if (adsWatched < maxAds) {
                 adsWatched++;
-                alert(`You have watched ${adsWatched} ads.`);
+                alert(`You have clicked ${adsWatched} ads.`);
                 
-                // Check if the user has watched all 5 ads
+                // Check if the user has clicked all 5 ads
                 if (adsWatched === maxAds) {
                     unlockDownload();
                 }
             }
         }
 
-        // Unlock the download link after 5 ads
+        // Unlock the download link after 5 ad clicks
         function unlockDownload() {
             const downloadLink = document.getElementById('download-link');
             downloadLink.style.display = 'block'; // Show the download link
@@ -30,16 +30,16 @@
     </script>
 </head>
 <body>
-    <h1>Watch Ads to Unlock the Download Link</h1>
-    <p>You need to watch 5 ads to unlock the download link.</p>
+    <h1>Click Ads to Unlock the Download Link</h1>
+    <p>You need to click 5 ads to unlock the download link for the file.</p>
 
-    <!-- Button to simulate ad watching -->
-    <button onclick="watchAd()">Watch Ad</button>
-
-    <!-- Ad from Adsterra (Banner Ad Code with your Ad Unit ID) -->
+    <!-- Banner Ad from Adsterra (Clicking this banner counts as an ad view) -->
     <div>
+        <!-- This is the clickable ad banner -->
         <script async="async" data-cfasync="false" src="//pl26257991.effectiveratecpm.com/f8edc1924b397524e5b104dbebbf9ff6/invoke.js"></script>
-        <div id="container-f8edc1924b397524e5b104dbebbf9ff6"></div>
+        <div id="container-f8edc1924b397524e5b104dbebbf9ff6" onclick="clickAd()" style="cursor: pointer;">
+            <!-- The ad will be displayed here, and clicking it will trigger the `clickAd` function -->
+        </div>
     </div>
 
     <!-- Hidden Download Link (Initially hidden) -->
