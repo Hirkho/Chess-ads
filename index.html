@@ -140,6 +140,40 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
+        /* Subscribe Section */
+        .subscribe-section {
+            background-color: #16a085;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscribe-section input {
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            margin-right: 10px;
+            width: 70%;
+        }
+
+        .subscribe-section button {
+            padding: 12px 20px;
+            background-color: #e74c3c;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscribe-section button:hover {
+            background-color: #c0392b;
+        }
+
         /* Responsiveness */
         @media (max-width: 768px) {
             h1 {
@@ -158,6 +192,12 @@
             #download-link {
                 font-size: 1.1em;
                 padding: 12px 30px;
+            }
+
+            .subscribe-section input,
+            .subscribe-section button {
+                width: 100%;
+                margin: 10px 0;
             }
         }
     </style>
@@ -185,6 +225,18 @@
             downloadLink.style.display = 'inline-block'; // Show the download link
             alert('Congratulations! You can now download the file.');
         }
+
+        // Function to handle subscription (dummy function)
+        function subscribeToChess() {
+            const email = document.getElementById('email').value;
+            if (email) {
+                alert(`Thank you for subscribing with email: ${email}`);
+                // Here, you can send the email to your backend or a service like Mailchimp, etc.
+                document.getElementById('email').value = '';  // Clear the input
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
     </script>
 </head>
 <body>
@@ -210,15 +262,4 @@
             <script async="async" data-cfasync="false" src="//pl26257991.effectiveratecpm.com/f8edc1924b397524e5b104dbebbf9ff6/invoke.js"></script>
             <div id="container-f8edc1924b397524e5b104dbebbf9ff6" onclick="clickAd()">
                 <!-- The ad will be displayed here, and clicking it will trigger the `clickAd` function -->
-            </div>
-        </div>
-
-        <!-- Hidden Download Link (Initially hidden) -->
-        <a id="download-link" href="path/to/your/file.exe">Click here to download the file</a>
-    </div>
-
-    <footer>
-        <p>Thank you for using our site! Enjoy your download.</p>
-    </footer>
-</body>
-</html>
+            </div
