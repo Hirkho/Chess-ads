@@ -4,78 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watch Ads to Unlock Download</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
             color: #333;
             text-align: center;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #4CAF50;
+            background-color: #2c3e50;
             color: white;
-            padding: 20px;
-            font-size: 24px;
+            padding: 40px;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         footer {
             background-color: #333;
             color: white;
-            padding: 10px;
-            margin-top: 30px;
+            padding: 15px;
+            margin-top: 50px;
         }
 
         h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
+            font-size: 3em;
             margin-top: 40px;
+            color: #2c3e50;
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             margin-top: 20px;
             color: #555;
         }
 
         .content {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 900px;
+            margin: 40px auto;
             padding: 20px;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Banner Ad Container */
         #container-f8edc1924b397524e5b104dbebbf9ff6 {
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             margin-top: 30px;
             max-width: 100%;
             display: inline-block;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #container-f8edc1924b397524e5b104dbebbf9ff6:hover {
+            transform: scale(1.05);
         }
 
         /* Button and Link Styling */
         button {
-            padding: 12px 24px;
+            padding: 15px 30px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 30px;
             font-size: 1.2em;
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         button:hover {
             background-color: #45a049;
+            transform: translateY(-5px);
         }
 
         #download-link {
@@ -83,19 +95,70 @@
             margin-top: 30px;
             background-color: #3498db;
             color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 1.2em;
+            padding: 15px 40px;
+            border-radius: 40px;
+            font-size: 1.3em;
             text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         #download-link:hover {
             background-color: #2980b9;
+            transform: translateY(-5px);
         }
 
-        /* Footer styling */
-        footer p {
-            font-size: 1em;
+        .ad-message {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 30px;
+        }
+
+        /* Animation for Unlocking */
+        @keyframes unlock-animation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .unlocked {
+            animation: unlock-animation 0.5s ease-in-out;
+        }
+
+        /* Instructions Styling */
+        .instructions {
+            background-color: #f39c12;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            button {
+                font-size: 1em;
+                padding: 12px 24px;
+            }
+
+            #download-link {
+                font-size: 1.1em;
+                padding: 12px 30px;
+            }
         }
     </style>
     <script>
@@ -106,8 +169,8 @@
         function clickAd() {
             if (adsWatched < maxAds) {
                 adsWatched++;
-                alert(`You have clicked ${adsWatched} ads.`);
-                
+                document.getElementById('ad-message').textContent = `You have clicked ${adsWatched} ads. Keep going!`;
+
                 // Check if the user has clicked all 5 ads
                 if (adsWatched === maxAds) {
                     unlockDownload();
@@ -118,7 +181,8 @@
         // Unlock the download link after 5 ad clicks
         function unlockDownload() {
             const downloadLink = document.getElementById('download-link');
-            downloadLink.style.display = 'block'; // Show the download link
+            downloadLink.classList.add('unlocked'); // Add animation
+            downloadLink.style.display = 'inline-block'; // Show the download link
             alert('Congratulations! You can now download the file.');
         }
     </script>
@@ -130,6 +194,16 @@
 
     <div class="content">
         <p>You need to click 5 ads to unlock the download link for the file.</p>
+        <p id="ad-message" class="ad-message">Click on the ad banner below to start.</p>
+
+        <!-- Instructions for the User -->
+        <div class="instructions">
+            <p><strong>Important:</strong></p>
+            <ul style="text-align: left;">
+                <li>Don't use ad blockers, as the ad won't load correctly.</li>
+                <li>Make sure to <strong>close any new tabs</strong> that open after clicking on ads.</li>
+            </ul>
+        </div>
 
         <!-- Banner Ad from Adsterra (Clicking this banner counts as an ad view) -->
         <div>
